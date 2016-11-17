@@ -1,0 +1,4 @@
+---
+
+- include: check.yml
+- include: playbook.yml

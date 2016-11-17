@@ -1,0 +1,26 @@
+#
+# creator infos
+creator_name: "Benjamin Jolivot"
+creator_mail: "bjolivot@gmail.com"
+creator_company: "Oscaro"
+creator_signature: 'See my other "work on my computer" ansible things on https://www.github.com/bjolivot'
+creator_year: "{{ ansible_date_time.year }}"
+
+
+# ansible environement
+ansible_working_dir: "~/ansible"
+ansible_playbooks_dir: "{{ ansible_working_dir }}/playbooks"
+ansible_roles_dir: "{{ ansible_working_dir }}/roles"
+
+#new playbook / role default path
+new_playbook_path: "{{ ansible_working_dir }}/playbooks"
+new_role_path: "{{ ansible_working_dir }}/roles"
+
+# override existing playbook / role
+override: false
+
+#for ansible.cfg
+cfg_remote_tmp: /tmp
+cfg_local_tmp: /tmp
+cfg_host_key_checking: False
+cfg_roles_path: "{{ ansible_roles_dir }}"

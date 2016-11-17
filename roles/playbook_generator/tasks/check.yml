@@ -1,0 +1,17 @@
+---
+- name: check mandatory vars
+  fail: msg="Variable '{{ item }}' is not defined"
+  when: item not in vars
+  tags: check
+  with_items: 
+    - new_playbook_name
+    - new_playbook_path
+
+- name: check "{{new_playbook_path}}/{{new_playbook_name}}" directory exists
+  stat: path="{{new_playbook_path}}/{{new_playbook_name}}"
+  register: p
+  tags: check
+
+- fail: msg="Path {{new_playbook_path}}/{{new_playbook_name}} allready exists, start playbook with override=true extra arg"
+  when: p.stat.isdir is defined and override==false
+  tags: check

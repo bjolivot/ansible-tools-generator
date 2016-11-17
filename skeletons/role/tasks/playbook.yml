@@ -1,0 +1,69 @@
+---
+# here comes the real playbook, executed after env check
+
+#sample commands:
+
+
+
+### Packages
+# - name: Update the repository cache and update package "nginx" to latest version using default release squeeze-backport
+#   apt:
+#     name: nginx
+#     update_cache: yes
+#     cache_valid_time: 600
+#     state: present
+
+# - name: add repository
+#   apt_repository: 
+#     repo: 'deb http://archive.canonical.com/ubuntu hardy partner' 
+#     update_cache: true
+#     state: present
+
+# - name: add ppa
+#   apt_repository: 
+#     repo: 'ppa:nginx/stable'
+#     state: present
+
+# - name: add repo key
+#   apt_key: 
+#     url: https://ftp-master.debian.org/keys/archive-key-6.0.asc 
+#     state: absent
+
+
+### files
+
+# - name: template conf file
+#   template: src="myfile.conf.j2" dest="/etc/mydir/myfile.conf" owner=root mode=0644
+#   notify: restart_supervisor
+
+
+### services
+# - name: restart service
+#   service: 
+#     name: supervisor
+#     state: restarted
+
+# - name: ensure service is started and auto starting at boot
+#   service: 
+#     name: supervisor
+#     state: started
+#     enabled: true
+
+
+###shell
+# shell: gsutil -m cp  "{{source}}" "{{destination}}"
+# args:
+# creates: "{{ destination }}"
+# chdir: "{{ my_dir }}"
+# register: download_file
+
+#local action (don't forget become=false for avoiding local sudo pass ask)
+# - name: check pem file is present
+#   local_action: 
+#      module: stat 
+#      path: "{{playbook_dir}}/{{gce_pem_file}}"
+#   become: false
+#   register: pem_file_stat
+#   ignore_errors: True
+#   tags: check
+

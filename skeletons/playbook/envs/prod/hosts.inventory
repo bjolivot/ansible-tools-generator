@@ -1,0 +1,10 @@
+[servers:children]
+web
+bdd
+
+[web]
+toto   ansible_host=1.2.3.4    ansible_user=toto
+
+[bdd]
+titi.oscaroad.com
+

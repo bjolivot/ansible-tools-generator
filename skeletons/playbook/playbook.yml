@@ -1,0 +1,58 @@
+---
+#playbook sample
+
+## full integrated playbook (no roles, no vars_files...)
+# - hosts: webservers
+#   vars:
+#     http_port: 80
+#     max_clients: 200
+#   remote_user: root
+#   tasks:
+#   - name: ensure apache is at the latest version
+#     yum: name=httpd state=latest
+#   - name: write the apache config file
+#     template: src=/srv/httpd.j2 dest=/etc/httpd.conf
+#     notify:
+#     - restart apache
+#   - name: ensure apache is running (and enable it at boot)
+#     service: name=httpd state=started enabled=yes
+#   handlers:
+#     - name: restart apache
+#       service: name=httpd state=restarted
+
+
+## load env specific vars (use -e for cli defined env)
+## ex: ansible-playbook -i hosts playbook.yml -e "env=dev"
+## need file dev.yml in group_vars
+# - name: load environment
+#   hosts: localhost
+#   tasks:
+#     - name: load "{{ env }}" settings
+#       include_vars: "group_vars/{{ env |mandatory}}.yml"
+
+
+
+#### Basic roles execution
+
+# - name: Install all 
+#   become: yes
+#   hosts: myhost
+#   roles:
+#     - working-env
+#     - install-java
+#     - gs-downloader
+#     - configure_varys
+#     - supervisor
+
+#### Use same role with differents vars
+# - name: Install all 
+#   become: yes
+#   hosts: myhost
+#   roles:
+#     - working-env
+#     - install-java
+#     - {role: gs-downloader, gs_dl_filename: "myfile.jar"}
+#     - {role: gs-downloader, gs_dl_filename: "myotherfile.jar"}
+#     - configure_varys
+#     - supervisor
+

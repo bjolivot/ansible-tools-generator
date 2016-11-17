@@ -1,0 +1,5 @@
+*.retry
+*.secret
+*.key
+*.crt
+*.pem

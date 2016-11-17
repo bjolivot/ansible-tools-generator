@@ -1,0 +1,4 @@
+# Here comes the required roles to be downloaded
+# - src: https://github.com/bjolivot/ansible-role-supervisor.git
+#   name: supervisor
+#   scm: git

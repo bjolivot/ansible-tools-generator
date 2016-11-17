@@ -1,0 +1,8 @@
+- name: generate role
+  hosts: localhost
+  connection: local
+  roles:
+    - role_generator
+
+
+

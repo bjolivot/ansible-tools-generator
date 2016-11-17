@@ -1,0 +1,25 @@
+---
+- name: create new playbook directory
+  file: 
+    path: "{{new_playbook_path}}/{{new_playbook_name}}" 
+    state: directory
+
+- name: create directory structure
+  synchronize: 
+    src: "{{ playbook_dir }}/skeletons/playbook/" 
+    dest: "{{new_playbook_path}}/{{new_playbook_name}}/"
+
+- name: add licence file
+  template: 
+    src: "{{ playbook_dir }}/templates/LICENSE.j2" 
+    dest: "{{ new_playbook_path }}/{{new_playbook_name}}/LICENSE"
+
+- name: add README file
+  template: 
+    src: "{{ playbook_dir }}/templates/playbook_README.j2" 
+    dest: "{{ new_playbook_path }}/{{new_playbook_name}}/README.md"
+
+- name: add ansible.cfg
+  template: 
+    src: "{{ playbook_dir }}/templates/ansible.cfg.j2"
+    dest: "{{ new_playbook_path }}/{{new_playbook_name}}/ansible.cfg"

@@ -1,0 +1,34 @@
+---
+# here comes env checking
+#
+#
+
+##check variable set
+# - fail: msg="Variable '{{ item }}' is not defined"
+#   tags: check
+#   when: item not in vars
+#   with_items: 
+#     - var1
+#     - var2
+
+##check directory exist
+# - name: check "{{ mydir }}" directory exists
+#   stat: path="{{ mydir }}"
+#   register: p
+#   tags: check
+#
+# - fail: msg="Path {{ mydir }} allready exists, start playbook with override=true extra arg"
+#   when: p.stat.isdir is defined
+#   tags: check
+
+##check local file (in ansible console) exists
+# - name: check if file.txt file is present at playbook root dir
+#   local_action: stat path="{{playbook_dir}}/test.txt"
+#   become: false
+#   register: pem_file_stat
+#   ignore_errors: True
+#   tags: check
+# 
+# - fail: msg="Pem file {{ gce_pem_file }} not found in playbook directory"
+#   when: pem_file_stat.stat.exists == false
+#   tags: check

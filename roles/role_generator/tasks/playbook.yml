@@ -1,0 +1,15 @@
+---
+- name: create new role directory
+  file: path="{{new_role_path}}/{{new_role_name}}" state=directory
+
+- name: create directory structure
+  synchronize: src="{{ playbook_dir }}/skeletons/role/" dest="{{new_role_path}}/{{new_role_name}}/"
+
+- name: add licence file
+  template: src="{{ playbook_dir }}/templates/LICENSE.j2" dest="{{ new_role_path }}/{{new_role_name}}/LICENSE"
+
+- name: add README file
+  template: src="{{ playbook_dir }}/templates/role_README.j2" dest="{{ new_role_path }}/{{new_role_name}}/README.md"
+
+- name: add meta.yml file
+  template: src="{{ playbook_dir }}/templates/meta_main.yml.j2" dest="{{ new_role_path }}/{{new_role_name}}/meta/main.yml"
