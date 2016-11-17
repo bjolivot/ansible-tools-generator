@@ -17,7 +17,7 @@ and start with shell scripts.
 Playbook Generator usage :
 --------------------------
 
-./generate_playbook.sh <NAME> [ extravar1=value1 axtra_var2=absc ...]
+./generate_playbook.sh <NAME> [  [new_playbook_path=/some/path] [override=True] ...]
 
 You can override all vars in [group_vars/all](all group_vars file) with extra values,
 generaly new_playbook_path=/some/path and/or override=true
@@ -28,10 +28,10 @@ Role Generator :
 ----------------
 
 
-./generate_role.sh <NAME> [ extravar1=value1 axtra_var2=absc ...]
+./generate_role.sh <NAME> [ [new_role_path=/some/path] [override=True] ...]
 
 You can override all vars in [group_vars/all](all group_vars file) with extra values,
-generaly new_playbook_path=/some/path and/or override=true
+generaly new_role_path=/some/path and/or override=true
 
 
 
