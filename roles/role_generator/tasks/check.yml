@@ -1,7 +1,7 @@
 ---
 - name: check mandatory vars
   fail: msg="Variable '{{ item }}' is not defined"
-    when: item not in vars
+  when: item not in vars
   tags: check
   with_items: 
     - new_role_name

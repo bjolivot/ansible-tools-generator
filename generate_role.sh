@@ -18,10 +18,9 @@ EXTRA_VARS="new_role_name=$1"
 shift
 
 while (( "$#" )); do
-  EXTRA_VARS="$EXTRA_VARS,$1"
+  EXTRA_VARS="$EXTRA_VARS, $1"
   shift
 done
 
 ansible-playbook generate_role.yml -e "$EXTRA_VARS"
-
 
